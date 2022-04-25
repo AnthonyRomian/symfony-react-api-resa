@@ -1,0 +1,9 @@
+{% block body %}
+    <h3 class="bg-success rounded text-black py-2 m-3 text-center">Une nouvelle réservation à été effectuée sur votre site</h3>
+    <div>
+        <h4>Date de la prise de rendez vous : <strong>{{ dateResa|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY")  }}</strong> </h4>
+        <div>Identité : {{ nom }} {{ prenom }}</div>
+        <div>Date du rendz vous : <strong>{{ dateRdv|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }}</strong></div>
+        <div>Massage : <strong>"{{ massage }}"</strong> à bien été pris en compte</div>
+    </div>
+{% endblock %}

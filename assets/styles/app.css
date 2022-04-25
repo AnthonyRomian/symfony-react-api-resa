@@ -1,3 +1,51 @@
+.font-link {
+    font-family: 'Pacifico', cursive;
+    color: #5D4037 ;
+}
+
+.font-link-2 {
+    font-family: 'Pacifico', cursive;
+    color: white ;
+}
+
+
 body {
-    background-color: lightgray;
+    font-family: 'Pacifico', cursive;
+}
+
+Footer  {
+    background-color: #5D4037;
+}
+
+.navbar {
+    background-color: #5D4037;
+}
+
+.navbar a:hover {
+    color: #ad7a65;
+    text-decoration: underline;
+}
+
+.navbar a:active {
+    color: #c19280;
+}
+
+li a {
+    color: white;
+}
+li a:hover {
+    color: black;
+}
+
+
+
+section {
+    background-size: cover;
+    width: 100%;
+    background-repeat: no-repeat;
+    background: linear-gradient(
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.45)
+    ),url("/assets/img/photo_accueil.jpg")no-repeat;
+
 }

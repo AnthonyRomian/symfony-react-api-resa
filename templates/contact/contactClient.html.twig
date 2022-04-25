@@ -1,0 +1,9 @@
+{% block body %}
+    <h3 class="bg-success rounded text-black py-2 m-3 text-center">Votre rendez vous à bien été pris en compte</h3>
+    <div>
+        <h4>{{ nom }} {{ prenom }}</h4>
+        <div>Votre rendez vous du <strong>{{ dateRdv|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }}</strong> pour le massage intitulé <strong>"{{ massage }}"</strong> à bien été pris en compte</div>
+        <div>Le Cabinet de massage se trouve à l'adresse suivante :</div>
+        <a  href="https://goo.gl/maps/eTQD1bhMm219AttP9" >33 Rue des pres, 37360 Beaumont la ronce</a>
+    </div>
+{% endblock %}
