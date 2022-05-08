@@ -8,6 +8,7 @@ use ApiPlatform\Core\EventListener\EventPriorities;
 use App\Entity\Reservation;
 use App\Service\MailerService;
 use DateTime;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,12 +19,17 @@ use Symfony\Component\HttpKernel\KernelEvents;
 
 class ReservationMassageSubscriber implements EventSubscriberInterface
 {
-
+    /**
+     * @var EntityManagerInterface
+     */
+    private $manager;
     private $mailer;
 
-    public function __construct(MailerService $mailer)
+    public function __construct(MailerService $mailer, EntityManagerInterface $manager)
     {
         $this->mailer = $mailer;
+        $this->manager = $manager;
+
     }
 
 
@@ -31,8 +37,9 @@ class ReservationMassageSubscriber implements EventSubscriberInterface
     {
         return [
             KernelEvents::VIEW => [
-                ['setDateResa', EventPriorities::POST_VALIDATE]/*,
-                ['sendMailToAdmin', EventPriorities::PRE_WRITE]*/,
+                ['setDateResar', EventPriorities::POST_VALIDATE],
+                ['setCompteur', EventPriorities::POST_VALIDATE],
+                ['sendMailToAdmin', EventPriorities::PRE_WRITE],
                 ['sendMailToCustomer', EventPriorities::PRE_WRITE]
                 ]
         ];
@@ -42,21 +49,49 @@ class ReservationMassageSubscriber implements EventSubscriberInterface
      *
      * @throws \Symfony\Component\Mailer\Exception\TransportExceptionInterface
      */
-    public function setDateResa(ViewEvent $event): void
+    public function setDateResar(ViewEvent $event): void
     {
         $reservation = $event->getControllerResult();
         $method = $event->getRequest()->getMethod();
 
-        if ($reservation instanceof Reservation || Request::METHOD_POST === $method)
+        if ($reservation instanceof Reservation && Request::METHOD_POST === $method)
         {
             date_default_timezone_set('Europe/Paris');
-            //$dateRdv = $reservation->getDateRdv();
             $date_resa = DateTime::createFromFormat('y-m-d h:i:s',date('y-m-d h:i:s'));
-            //$date_rdv = DateTime::createFromFormat('y-m-d h:i:s',$dateRdv);
-
             $dateResa = $reservation->setDateResa($date_resa);
-            //$dateRdv = $reservation->setDateRdv($date_rdv);
 
+            new Response();
+        }
+        //TODO test integration google calendar
+
+
+    }
+
+    /**
+     *
+     * @throws \Symfony\Component\Mailer\Exception\TransportExceptionInterface
+     */
+    public function setCompteur(ViewEvent $event ): void
+    {
+        $reservation = $event->getControllerResult();
+        $method = $event->getRequest()->getMethod();
+
+        if ($reservation instanceof Reservation && Request::METHOD_POST === $method)
+        {
+            $mail = $reservation->getEmail();
+            $nom = $reservation->getNom();
+            $prenom = $reservation->getPrenom();
+            $dateRdv = $reservation->getDateRdv();
+            $dateResa = $reservation->getDateResa();
+            $massage = $reservation->getMassage()->getNom();
+
+            $list = $this->manager->getRepository(Reservation::class)->findBy(array("nom" => $nom, "prenom" => $prenom));
+            $compteur = sizeof($list);
+            if ($compteur == 0) {
+                $reservation->setNbrePassage(1);
+            } else {
+                $reservation->setNbrePassage($compteur+1);
+            }
             new Response();
         }
         //TODO test integration google calendar
@@ -73,9 +108,8 @@ class ReservationMassageSubscriber implements EventSubscriberInterface
         $reservation = $event->getControllerResult();
         $method = $event->getRequest()->getMethod();
 
-        if ($reservation instanceof Reservation || Request::METHOD_POST === $method)
+        if ($reservation instanceof Reservation && Request::METHOD_POST === $method)
         {
-            $mail = $reservation->getEmail();
             $nom = $reservation->getNom();
             $prenom = $reservation->getPrenom();
             $dateRdv = $reservation->getDateRdv();
@@ -89,7 +123,7 @@ class ReservationMassageSubscriber implements EventSubscriberInterface
                 "massage" => $massage
             ];
 
-            $this->mailer->send("Relach & Vous - Une réservation à été faite", "aromian1@gmail.com",$mail, "/contact/contactAdmin.html.twig",$parameters);
+            $this->mailer->send("Relach & Vous - Une réservation à été faite", "aromian1@gmail.com","aromian1@gmail.com", "/contact/contactAdmin.html.twig",$parameters);
 
             new Response();
         }
@@ -107,7 +141,7 @@ class ReservationMassageSubscriber implements EventSubscriberInterface
         $reservation = $event->getControllerResult();
         $method = $event->getRequest()->getMethod();
 
-        if ($reservation instanceof Reservation || Request::METHOD_POST === $method)
+        if ($reservation instanceof Reservation && Request::METHOD_POST === $method)
         {
             $mail = $reservation->getEmail();
             $nom = $reservation->getNom();

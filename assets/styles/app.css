@@ -1,33 +1,46 @@
+body {
+    font-family: 'Pacifico', cursive;
+    background-color: #e3e2e2;
+    line-height: unset;
+    overflow-x: hidden;
+    margin: 0;
+}
+
 .font-link {
     font-family: 'Pacifico', cursive;
-    color: #5D4037 ;
 }
 
 .font-link-2 {
     font-family: 'Pacifico', cursive;
-    color: white ;
 }
 
-
-body {
-    font-family: 'Pacifico', cursive;
+.color-primaire {
+    color: #d2d2d2;
 }
 
-Footer  {
-    background-color: #5D4037;
+.color-secondaire {
+    color: black ;
+}
+
+.shape {
+    height: 17px;
 }
 
 .navbar {
-    background-color: #5D4037;
+    background-color: #e3a529;
 }
 
 .navbar a:hover {
-    color: #ad7a65;
+    color: #e3e2e2;
     text-decoration: underline;
 }
 
 .navbar a:active {
-    color: #c19280;
+    color: #e3e2e2;
+}
+
+.Banniere {
+    line-height: unset;
 }
 
 li a {
@@ -37,15 +50,21 @@ li a:hover {
     color: black;
 }
 
+.fade {
+    transition:  1s;
+}
 
+Footer  {
+    background-color: #e3a529;
+
+}
 
 section {
     background-size: cover;
     width: 100%;
-    background-repeat: no-repeat;
     background: linear-gradient(
             rgba(0, 0, 0, 0.45),
             rgba(0, 0, 0, 0.45)
-    ),url("/assets/img/photo_accueil.jpg")no-repeat;
+    ),url("/assets/img/photo_accueil.jpg");
 
 }

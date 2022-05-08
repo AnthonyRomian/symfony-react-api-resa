@@ -1,17 +1,19 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import Field from "../components/forms/Field";
 import axios from "axios";
 import Select from "../components/forms/Select";
 import {toast} from "react-toastify";
+import AuthContext from "../contexts/AuthContext";
 
 const ReservationPage = (props) => {
 
     const [massages, setMassages] = useState([]);
+    const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
 
     // load du massage
     useEffect(() => {
         axios.get("http://127.0.0.1:8000/api/massages")
-            .then(response => response.data["hydra:member"])
+            .then(response => response.data)
             .then(data => setMassages(data));
     }, []);
 
@@ -58,7 +60,14 @@ const ReservationPage = (props) => {
                 ...reservation,
                 massage: `/api/massages/${reservation.massage}`
             });
+            console.log(isAuthenticated);
+            if (isAuthenticated) {
+                history.push("/admin");
             toast.success("Votre réservation à bien été prise en compte");
+            } else {
+                toast.success("Votre réservation à bien été prise en compte");
+
+            }
         } catch ({response}) {
             toast.error("Selectionnez votre massage");
             const {violations} = response.data;

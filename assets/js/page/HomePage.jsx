@@ -5,7 +5,7 @@ const HomePage = (props) => {
         <div className="py-3">
             <h1 className="font-link text-center">A propos de moi</h1>
             <div className="card-deck row py-4">
-                <div className="card">
+                <div className="mx-3 card">
                     <div className="card-body font-link text-center">
                         Sandra<br/>
                         Praticienne en massages bien-être<br/>
@@ -13,7 +13,7 @@ const HomePage = (props) => {
                         37360 BEAUMONT LA RONCE
                     </div>
                 </div>
-                <div className="card ">
+                <div className="mx-3 card ">
                     <div className="card-body font-link justify-content">
                         Certifiée fin 2021 par l'école 'En Vie de Sens' située à Tours (37), je vous propose un moment
                         de détente <br/>
@@ -22,9 +22,15 @@ const HomePage = (props) => {
                         Les huiles utilisées sont certifiées bio.
                     </div>
                 </div>
-                <div className="mx-5 card text-center">
-                    <div className="card-header font-link">Offre de bienvenue</div>
-                    <div className="card-body font-link">10€ offert sur le 1er massage</div>
+            </div>
+            <div className="card-deck row py-4">
+                <div className="mx-3 card text-center">
+                    {/*<div className="card-header font-link">Offre de bienvenue</div>*/}
+                    <div className="card-header font-link">10€ offert sur le 1er massage</div>
+                    {/*<div className="card-body font-link">10€ offert sur le 1er massage</div>*/}
+                    <div>
+                        <img className="" height={250} width={250} src="assets/img/offre_de_bienvenue.jpg"  alt="offre_du_moment"/>
+                    </div>
                 </div>
 
 
