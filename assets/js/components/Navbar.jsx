@@ -23,27 +23,27 @@ const Navbar = (props) => {
   return (
     <nav className=" navbar navbar-expand-lg justify-content-center" id="navbar">
       <div className="container container-fluid">
-        <NavLink className="navbar-brand" to="#"><img src="assets/img/logos/logo_massage_3.png"  alt="Relach & vous" /></NavLink>
-        <button onClick={handleNavCollapse} className="navbar-toggler fade" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon "><i className="fas fa-bars"></i></span>
+        <NavLink className="navbar-brand" to="#"><img src="assets/img/logos/logo_1_1.png" height={100} width={100} alt="Relach & vous" /></NavLink>
+        <button onClick={handleNavCollapse} className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler"><i className="fas fa-bars"></i></span>
         </button>
 
         <div className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse `}  id="navbarColor03" >
           <ul className="navbar-nav me-auto">
-            <li className="nav-item text-center">
-              <NavLink className="nav-link color-secondaire font-link-2  active" to="/">ACCUEIL</NavLink>
+            <li className="nav-item text-center mx-2">
+              <NavLink className="nav-link py-1 color-secondaire font-link-2  fs-2 active" to="/">Accueil</NavLink>
             </li>
-            <li className="nav-item text-center">
-              <NavLink className="nav-link color-secondaire font-link-2 active" to="/massages">MASSAGES</NavLink>
+            <li className="nav-item text-center mx-2">
+              <NavLink className="nav-link py-1 color-secondaire font-link-2 mx-2 fs-2 active" to="/massages">Les Massages</NavLink>
             </li>
-            <li className="nav-item text-center">
-              <NavLink className="nav-link color-secondaire font-link-2 active" to="/livre">LIVRE D'OR</NavLink>
+            <li className="nav-item text-center mx-2">
+              <NavLink className="nav-link py-1 color-secondaire font-link-2 mx-2 fs-2 active" to="/livre">Livre d'or</NavLink>
             </li>
-            <li className="nav-item text-center">
-              <NavLink className="nav-link color-secondaire font-link-2 active" to="/reservation">RESERVATION</NavLink>
+            <li className="nav-item text-center mx-2">
+              <NavLink className="nav-link py-1 color-secondaire font-link-2 mx-2 fs-2 active" to="/reservation">Réservation</NavLink>
             </li>
-            <li className="nav-item text-center">
-              <NavLink className="nav-link color-secondaire font-link-2 active" to="/contact">CONTACT</NavLink>
+            <li className="nav-item text-center mx-2">
+              <NavLink className="nav-link py-1 color-secondaire font-link-2 mx-2 fs-2 active" to="/contact">Contact</NavLink>
             </li>
             {/*<ul className="navbar-nav ml-auto">
               {(!isAuthenticated && (<>

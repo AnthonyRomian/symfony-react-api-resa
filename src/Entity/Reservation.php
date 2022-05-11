@@ -95,8 +95,8 @@ class Reservation
     /**
      * @ORM\Column(type="datetime")
      * @Groups({"reservation_read"})
-     * @Assert\GreaterThanOrEqual("+24 hours",
-     * message="Reservez 24h à l'avance")
+     * @Assert\GreaterThanOrEqual("+48 hours",
+     * message="Reservez 48h à l'avance - Contactez nous par téléphone")
      * @Assert\NotBlank(message="La date de reservation est obligatoire")
      *
      */

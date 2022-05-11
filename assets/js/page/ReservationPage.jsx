@@ -85,8 +85,8 @@ const ReservationPage = (props) => {
 
     return (
 
-            <div className="py-3">
-                <h1 className="font-link text-center">Réservation</h1>
+            <div className="py-3 mx-1">
+                <h1 className="font-link text-center mt-1">Réservation</h1>
                 <form onSubmit={handleSubmit} className="row">
                     <Field
                         name="nom"
@@ -128,7 +128,7 @@ const ReservationPage = (props) => {
 
                     <Field
                         name="dateRdv"
-                        label="Date du rendez vous"
+                        label="Date & heure du rendez vous"
                         type="datetime-local"
                         value={reservation.dateRdv}
                         onChange={handleChange}
@@ -150,7 +150,7 @@ const ReservationPage = (props) => {
                     </Select>
 
                     <div className="form-group">
-                        <button type="submit" className="btn btn-primary">Réserver un moment de détente</button>
+                        <button type="submit" className="btn btn-primaire fs-3 mt-3 col-12">Réserver un moment de détente</button>
                     </div>
                 </form>
             </div>

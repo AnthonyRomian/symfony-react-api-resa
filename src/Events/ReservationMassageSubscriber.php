@@ -115,12 +115,16 @@ class ReservationMassageSubscriber implements EventSubscriberInterface
             $dateRdv = $reservation->getDateRdv();
             $dateResa = $reservation->getDateResa();
             $massage = $reservation->getMassage()->getNom();
+            $tel = $reservation->getTel();
+            $email = $reservation->getEmail();
             $parameters= [
                 "nom" => $nom,
                 "prenom" => $prenom,
                 "dateRdv" => $dateRdv,
                 "dateResa" => $dateResa,
-                "massage" => $massage
+                "massage" => $massage,
+                "tel" => $tel,
+                "email" => $email
             ];
 
             $this->mailer->send("Relach & Vous - Une réservation à été faite", "aromian1@gmail.com","aromian1@gmail.com", "/contact/contactAdmin.html.twig",$parameters);

@@ -6,7 +6,7 @@ function findAll () {
     return axios
     
     .get(MASSAGES_API)
-    .then(response => response.data["hydra:member"]);
+    .then(response => response.data);
 }
 
 function deleteMassage(id)  {

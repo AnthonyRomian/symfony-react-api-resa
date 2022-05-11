@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 // any CSS you import will output into a single css file (app.css in this case)
-import './styles/app.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
+import '@fortawesome/fontawesome-free/css/all.css';
 import './styles/normalize.css';
+import './styles/app.css';
+
 // start the Stimulus application
-import './bootstrap';
 import {HashRouter, Route, Switch, withRouter} from "react-router-dom";
 import HomePage from "./js/page/HomePage";
 import MassagePage from "./js/page/MassagePage";
@@ -25,6 +27,8 @@ import LoginPage from "./js/page/LoginPage";
 import PrivateRoute from "./js/components/PrivateRoute";
 import AuthAPI from "./js/services/AuthAPI";
 import AuthContext from "./js/contexts/AuthContext";
+import LivreOr from "./js/page/LivreOr";
+import Important from "./js/components/Important";
 
 
 const App = () => {
@@ -51,19 +55,21 @@ const App = () => {
                             <Route path="/prix" component={PrixPage} />
                             <Route path="/contact" component={ContactPage} />
                             <Route path="/reservation" component={ReservationPage} />
+                            <Route path="/livre" component={LivreOr} />
                             <Route path="/login" component={LoginPage} />
                             <PrivateRoute path="/admin" component={AdminHomePage} />
                             <Route path="/register" component={RegisterPage} />
                             <Route path="/" component={HomePage} />
                         </Switch>
+                        <Important/>
                     </main>
-                    <div id="shape" className="position-relative m-0">
-                        <div className="shape shape-bottom shape-fluid-x text-dark">
-                            <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="#e3a529"></path>
+                    {/*<div id="shape" className="position-relative m-0 mt-2">
+                        <div className="shape shape-bottom shape-fluid-x ">
+                            <svg viewBox="0 0 2880 48" fill="#500B1F99" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="#500B1F99"></path>
                             </svg>
                         </div>
-                    </div>
+                    </div>*/}
                     <Footer/>
                 </HashRouter>
             <ToastContainer position={toast.POSITION.BOTTOM_LEFT}/>

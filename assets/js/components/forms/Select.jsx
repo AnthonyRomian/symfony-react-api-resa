@@ -3,8 +3,8 @@ import React from "react";
 
 const Select = ({ name, value, error = "", label, onChange, children }) => {
   return (
-    <div className="form-group col-12 col-sm-6 col-xl-6">
-      <label htmlFor={name}>{label}</label>
+    <div className="form-group col-12 col-sm-6 col-xl-6 my-2">
+      <label className="fs-3 mb-1" htmlFor={name}>{label}</label>
       <select
         onChange={onChange}
         name={name}
