@@ -5,6 +5,7 @@ import {toast} from "react-toastify";
 export const ContactPage = () => {
     const form = useRef();
 
+    // Mail page contact EmailJs config
     const sendEmail = (e) => {
         e.preventDefault();
         emailjs.sendForm('service_e6bqw5n', 'template_jzpuwoj', form.current, 'F80pEWQLPrfJMNdJ9')

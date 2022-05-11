@@ -1,5 +1,18 @@
+/*
+font-family: 'Cardo', serif;
+font-family: 'Italianno', cursive;
+
+font-family: 'Grandstander', cursive;
+
+font-family: 'Lobster Two', cursive;
+font-family: 'Sansita Swashed', cursive;
+font-family: 'Dancing Script', cursive;
+
+*/
+
 body {
-    font-family: 'Pacifico', cursive;
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;
     background-color: #e3e2e2;
     line-height: unset;
     overflow-x: hidden;
@@ -7,11 +20,13 @@ body {
 }
 
 .font-link {
-    font-family: 'Pacifico', cursive;
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;
 }
 
 .font-link-2 {
-    font-family: 'Pacifico', cursive;
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;
 }
 
 .color-primaire {
@@ -19,28 +34,69 @@ body {
 }
 
 .color-secondaire {
-    color: black ;
+    color: #d2d2d2;
+}
+/*--------- BOUTON -----------*/
+.form-group .btn-primaire {
+    color: white;
+    background-color: #500B1F99;
+    border-color: #500B1F99;
+}
+.form-group .btn-primaire:hover {
+    color: white;
+    background-color: #000000;
+    border-color: #000000;
 }
 
-.shape {
-    height: 17px;
+.form-group .btn-secondaire {
+    color: white;
+    background-color: #000000;
+    border-color: #000000;
+}
+
+.card {
+    border: 2px solid #500B1F99;
+    border-radius: 0.5rem;
+}
+
+.card-header {
+    border-bottom: 1px solid #500B1F99;
+}
+
+
+
+
+
+#shape {
+    height: 13px;
 }
 
 .navbar {
-    background-color: #e3a529;
+    background-color: #500B1F99;
+
 }
 
 .navbar a:hover {
-    color: #e3e2e2;
-    text-decoration: underline;
+    color: black;
+    text-decoration: none;
 }
 
 .navbar a:active {
-    color: #e3e2e2;
+    color: black;
 }
 
 .Banniere {
     line-height: unset;
+}
+
+section {
+    background-size: cover;
+    width: 100%;
+    background-image: linear-gradient(
+            rgba(80, 11, 31, 0.40),
+            rgba(80,11,31,0.60)
+    ),url("/assets/img/photo_accueil.jpg");
+
 }
 
 li a {
@@ -55,16 +111,10 @@ li a:hover {
 }
 
 Footer  {
-    background-color: #e3a529;
+    background-color: #500B1F99;
 
 }
 
-section {
-    background-size: cover;
-    width: 100%;
-    background: linear-gradient(
-            rgba(0, 0, 0, 0.45),
-            rgba(0, 0, 0, 0.45)
-    ),url("/assets/img/photo_accueil.jpg");
 
-}
+
+
