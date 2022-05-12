@@ -11,9 +11,7 @@ import LivreOr from "./LivreOr";
 const MassagePage = (props) => {
 
     const [massages, setMassages] = useState([]);
-
     const [loading, setLoading] = useState(true);
-
 
     const fetchMassages = async () => {
         try {

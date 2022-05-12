@@ -1,5 +1,5 @@
-export const API_URL = "http://127.0.0.1:8000/api/";
-//# API_URL="'https://crmlite.anthony-romian-dev.fr/api/'"
+export const API_URL = "https://relachezvous.com/api/";
+//# API_URL="'https://relachezvous.com/api/'"
 //API_URL="'http://localhost:8000/api/'"
 
 export const RESERVATIONS_API = API_URL + "reservations";

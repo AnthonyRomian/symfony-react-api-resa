@@ -4,6 +4,7 @@ import axios from "axios";
 import Select from "../components/forms/Select";
 import {toast} from "react-toastify";
 import AuthContext from "../contexts/AuthContext";
+import {API_URL} from "../config";
 
 const ReservationPage = (props) => {
 
@@ -12,7 +13,7 @@ const ReservationPage = (props) => {
 
     // load du massage
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/api/massages")
+        axios.get(API_URL+"massages")
             .then(response => response.data)
             .then(data => setMassages(data));
     }, []);
@@ -56,7 +57,7 @@ const ReservationPage = (props) => {
     const handleSubmit = async event => {
         event.preventDefault();
         try {
-            await axios.post("http://127.0.0.1:8000/api/reservations", {
+            await axios.post(API_URL+"reservations", {
                 ...reservation,
                 massage: `/api/massages/${reservation.massage}`
             });
