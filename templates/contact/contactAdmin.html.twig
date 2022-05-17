@@ -3,8 +3,9 @@
     <div>
         <h4>Date de la prise de rendez vous : <strong>{{ dateResa|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY")  }}</strong> </h4>
         <div>Identité : <strong>{{ nom }}</strong> {{ prenom }}</div>
-        <div>Contact : Tel : <strong>{{ tel }}</strong>, email : <strong>{{ email }}</strong></div>
-        <div>Date du massage : <strong>{{ dateRdv|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }}</strong></div>
+        <div>Contact : Tel : <strong>{{ tel }}</strong>, email : <strong>{{ mail }}</strong></div>
+{#        <div>Date du massage : <strong>{{ dateRdv|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY H:i:s") }}</strong></div>#}
+        <div>Date du massage : <strong>{{ dateRdv|format_datetime('full', 'short') }}</strong></div>
         <div>Reservation du Massage : <strong>"{{ massage }}"</strong> à bien été pris en compte</div>
     </div>
 {% endblock %}

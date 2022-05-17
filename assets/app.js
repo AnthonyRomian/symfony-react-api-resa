@@ -48,8 +48,7 @@ const App = () => {
                 <HashRouter >
                     <NavBarWithRouter/>
                     <Banniere/>
-
-                    <main className="container pt-8 pt-md-11 pb-8 pb-md-14 ">
+                    <main className="container ">
                         <Switch>
                             <Route path="/massages" component={MassagePage} />
                             <Route path="/prix" component={PrixPage} />
@@ -63,13 +62,6 @@ const App = () => {
                         </Switch>
                         <Important/>
                     </main>
-                    {/*<div id="shape" className="position-relative m-0 mt-2">
-                        <div className="shape shape-bottom shape-fluid-x ">
-                            <svg viewBox="0 0 2880 48" fill="#500B1F99" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="#500B1F99"></path>
-                            </svg>
-                        </div>
-                    </div>*/}
                     <Footer/>
                 </HashRouter>
             <ToastContainer position={toast.POSITION.BOTTOM_LEFT}/>

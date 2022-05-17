@@ -124,7 +124,7 @@ class ReservationMassageSubscriber implements EventSubscriberInterface
                 "dateResa" => $dateResa,
                 "massage" => $massage,
                 "tel" => $tel,
-                "email" => $email
+                "mail" => $email
             ];
 
             $this->mailer->send("Relach & Vous - Une réservation à été faite", "aromian1@gmail.com","aromian1@gmail.com", "/contact/contactAdmin.html.twig",$parameters);

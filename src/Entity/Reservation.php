@@ -103,11 +103,17 @@ class Reservation
     private $dateRdv;
 
     /**
-     * @ORM\OneToOne(targetEntity=Massage::class, cascade={"persist", "remove"})
-     * @Groups({"reservation_read"})
-     * @ORM\JoinColumn(onDelete="SET NULL")
+     * @ORM\ManyToOne(targetEntity=Massage::class, inversedBy="reservations")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $massage;
+
+//@ORM\OneToMany(targetEntity=Massage::class, cascade={"persist", "remove"})
+//* @Groups({"reservation_read"})
+//     * @ORM\JoinColumn(onDelete="SET NULL")
+
+
+//    private $massage;
 
 
     public function getId(): ?int
@@ -198,6 +204,18 @@ class Reservation
     {
         $this->dateRdv = $dateRdv;
     }
+
+    /*public function getMassage(): ?Massage
+    {
+        return $this->massage;
+    }
+
+    public function setMassage(?Massage $massage): self
+    {
+        $this->massage = $massage;
+
+        return $this;
+    }*/
 
     public function getMassage(): ?Massage
     {

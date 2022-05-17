@@ -13,10 +13,11 @@ font-family: 'Dancing Script', cursive;
 body {
     font-family: 'Dancing Script', cursive;
     font-weight: bold;
-    background-color: #e3e2e2;
+    background-color: white;
     line-height: unset;
     overflow-x: hidden;
     margin: 0;
+    min-width: 290px;
 }
 
 .font-link {
@@ -30,17 +31,23 @@ body {
 }
 
 .color-primaire {
-    color: #d2d2d2;
+    color: black;
 }
 
 .color-secondaire {
-    color: #d2d2d2;
+    color: #CCA956;
 }
+
+.color-3 {
+    color: #786b62;
+}
+
+
 /*--------- BOUTON -----------*/
 .form-group .btn-primaire {
     color: white;
-    background-color: #500B1F99;
-    border-color: #500B1F99;
+    background-color: #CCA956;
+    border-color: #CCA956;
 }
 .form-group .btn-primaire:hover {
     color: white;
@@ -53,26 +60,37 @@ body {
     background-color: #000000;
     border-color: #000000;
 }
-
-.card {
-    border: 2px solid #500B1F99;
+/*
+#500B1F99
+#c4aa84
+#f3edd3
+  */
+  .card {
+    border: 2px solid #CCA956 ;
     border-radius: 0.5rem;
 }
 
+
+
 .card-header {
-    border-bottom: 1px solid #500B1F99;
+    border-bottom: 1px solid #CCA956 ;
 }
 
+#frise {
+    object-fit: cover;
+}
 
-
-
+#flip {
+    height: 100%;
+    min-height: 217px;
+}
 
 #shape {
     height: 13px;
 }
 
 .navbar {
-    background-color: #500B1F99;
+    background-color: white;
 
 }
 
@@ -81,8 +99,8 @@ body {
     text-decoration: none;
 }
 
-.navbar a:active {
-    color: black;
+.nav-link:focus, .nav-link:hover {
+    color: #786b62;
 }
 
 .Banniere {
@@ -93,10 +111,10 @@ section {
     background-size: cover;
     width: 100%;
     background-image: linear-gradient(
-            rgba(80, 11, 31, 0.40),
-            rgba(80,11,31,0.60)
+            rgba(196, 170, 132, 0.40),
+            rgba(196, 170, 132,0.60)
     ),url("/assets/img/photo_accueil.jpg");
-
+    /*background-image: url("/assets/img/Page_accueil_5.png");*/
 }
 
 li a {
@@ -111,10 +129,12 @@ li a:hover {
 }
 
 Footer  {
-    background-color: #500B1F99;
-
+    background-color: white;
+    /*border-top: 2px solid #CCA956;*/
 }
 
-
+div p {
+    white-space: pre-wrap;
+}
 
 

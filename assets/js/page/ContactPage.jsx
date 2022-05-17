@@ -1,6 +1,7 @@
 import React, {useRef} from 'react';
 import emailjs from '@emailjs/browser';
 import {toast} from "react-toastify";
+import {EMAILJS_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID} from "../config";
 
 export const ContactPage = () => {
     const form = useRef();
@@ -8,7 +9,7 @@ export const ContactPage = () => {
     // Mail page contact EmailJs config
     const sendEmail = (e) => {
         e.preventDefault();
-        emailjs.sendForm('service_e6bqw5n', 'template_jzpuwoj', form.current, 'F80pEWQLPrfJMNdJ9')
+        emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form.current, EMAILJS_KEY)
             .then((result) => {
                 toast.success("Votre message à bien été envoyé");
 
@@ -55,27 +56,29 @@ export const ContactPage = () => {
                             <h3 className=" card-title  fw-bold  text-gray-700">
                                 Adresse
                             </h3>
-                            <p className="card-body text-muted fs-4">33 Rue des prés <br/>
-                                37360 Beaumont la ronce
+                            <p className="card-body color-3 fs-4">33 Rue des prés <br/>
+                                37360 Beaumont Louestault
                             </p>
                             <h3 className="card-title  fw-bold  text-gray-700">
                                 Horaires
                             </h3>
-                            <p className="card-body text-muted fs-4">Lundi au vendredi 9h-12h à 13h-18h</p>
-                            <a className="fw-bold mt-1 text-gray-700 fs-4 text-black text-decoration-none"
-                               href="mailto:exemple@gmail.com"><i className="fa-solid fa-envelope mx-2"></i>
-                                exemple@gmail.com
+                            <ul className="list-unstyled text-muted ">
+                                <li className="mb-3 color-3 fs-4">Lundi au vendredi 9h à 19h</li>
+                                <li className="mb-3 color-3 fs-4">Samedi 9h30 à 17h</li>
+                            </ul>
+                            <a className="fw-bold my-1 text-gray-700 fs-4 text-black text-decoration-none"
+                               href="mailto:contact@relachezvous.com"><i className="fa-solid fa-envelope mx-2"></i>
+                                contact@relachezvous.com
                             </a>
-                            <h4 className="fw-bold mt-1 text-gray-700"><i className="fa-solid fa-phone mx-2"></i>
-                                06 82 16 56 29
-                            </h4>
+                            <a href="tel:0665366392" className="fw-bold my-1  text-gray-700 fs-4 text-black text-decoration-none"><i className="fa-solid fa-phone mx-2"></i>
+                                06 65 36 63 92
+                            </a>
                         </div>
                     </div>
 
 
                 </form>
             </div>
-
         </>
 
     );

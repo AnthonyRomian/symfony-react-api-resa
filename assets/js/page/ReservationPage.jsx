@@ -61,7 +61,6 @@ const ReservationPage = (props) => {
                 ...reservation,
                 massage: `/api/massages/${reservation.massage}`
             });
-            console.log(isAuthenticated);
             if (isAuthenticated) {
                 history.push("/admin");
             toast.success("Votre réservation à bien été prise en compte");
@@ -87,7 +86,7 @@ const ReservationPage = (props) => {
     return (
 
             <div className="py-3 mx-1">
-                <h1 className="font-link text-center mt-1">Réservation</h1>
+                <h1 className="font-link text-center mt-1">Réservation au cabinet</h1>
                 <form onSubmit={handleSubmit} className="row">
                     <Field
                         name="nom"
@@ -151,9 +150,20 @@ const ReservationPage = (props) => {
                     </Select>
 
                     <div className="form-group">
-                        <button type="submit" className="btn btn-primaire fs-3 mt-3 col-12">Réserver un moment de détente</button>
+                        <button type="submit" className="btn btn-primaire fs-3 mt-3 col-12">Réserver un moment de détente ( au cabinet )</button>
                     </div>
+
+
                 </form>
+                <h1 className="font-link text-center my-3">Pour réserver un moment de détente à domicile</h1>
+                <div className=" card-deck mt-3 mx-1">
+                    <div className="col-12 col-sm-12 col-xl-6 mb-3 mb-sm-0 mx-auto mb-xl-0  card">
+                        <div className="card-header text-center font-link fs-2"><i className="fa-solid fa-house px-3"></i>A domicile<i className="fa-solid fa-house px-3"></i></div>
+                        <div className="card-body font-link justify-content">
+                            <a href="tel:0665366392" className="btn btn-primaire fs-3 color-3 col-12"><i className="fa-solid fa-phone mx-2"></i> Appelez le 0665366392</a>
+                        </div>
+                    </div>
+                </div>
             </div>
     );
 };

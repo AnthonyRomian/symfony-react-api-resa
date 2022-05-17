@@ -34,7 +34,7 @@ class Massage
     private $nom;
 
     /**
-     * @ORM\Column(type="string", length=550)
+     * @ORM\Column(type="string", length=800)
      */
     private $description;
 
@@ -54,6 +54,16 @@ class Massage
      * @ORM\Column(type="string", length=50, nullable=true)
      */
     private $img;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="massage")
+     */
+    private $reservations;
+
+    public function __construct()
+    {
+        $this->reservations = new ArrayCollection();
+    }
 
 
 
@@ -118,6 +128,36 @@ class Massage
     public function setImg(?string $img): self
     {
         $this->img = $img;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Reservation>
+     */
+    public function getReservations(): Collection
+    {
+        return $this->reservations;
+    }
+
+    public function addReservation(Reservation $reservation): self
+    {
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations[] = $reservation;
+            $reservation->setMassage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): self
+    {
+        if ($this->reservations->removeElement($reservation)) {
+            // set the owning side to null (unless already changed)
+            if ($reservation->getMassage() === $this) {
+                $reservation->setMassage(null);
+            }
+        }
 
         return $this;
     }
