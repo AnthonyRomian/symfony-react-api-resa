@@ -3,19 +3,18 @@ import Field from "../components/forms/Field";
 import axios from "axios";
 import Select from "../components/forms/Select";
 import {toast} from "react-toastify";
-import AuthContext from "../contexts/AuthContext";
 import {API_URL} from "../config";
 
 const ReservationPage = (props) => {
 
     const [massages, setMassages] = useState([]);
-    const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
 
     // load du massage
     useEffect(() => {
         axios.get(API_URL+"massages")
             .then(response => response.data)
             .then(data => setMassages(data));
+
     }, []);
 
 

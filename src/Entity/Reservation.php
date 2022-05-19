@@ -104,6 +104,7 @@ class Reservation
 
     /**
      * @ORM\ManyToOne(targetEntity=Massage::class, inversedBy="reservations")
+     * @Groups({"reservation_read"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $massage;

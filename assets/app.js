@@ -21,30 +21,16 @@ import Banniere from "./js/components/Banniere";
 import ReservationPage from "./js/page/ReservationPage";
 import {toast, ToastContainer} from "react-toastify";
 import Footer from "./js/components/Footer";
-import AdminHomePage from "./js/page/AdminHomePage";
-import RegisterPage from "./js/page/RegisterPage";
-import LoginPage from "./js/page/LoginPage";
-import PrivateRoute from "./js/components/PrivateRoute";
-import AuthAPI from "./js/services/AuthAPI";
-import AuthContext from "./js/contexts/AuthContext";
 import LivreOr from "./js/page/LivreOr";
 import Important from "./js/components/Important";
 
-
 const App = () => {
-
-    const [isAuthenticated, setIsAuthenticated] = useState(
-        AuthAPI.isAuthenticated()
-    );
 
     const NavBarWithRouter = withRouter(Navbar);
 
     return (
-        <AuthContext.Provider value={{
-            isAuthenticated,
-            setIsAuthenticated
-        }}>
 
+        <>
                 <HashRouter >
                     <NavBarWithRouter/>
                     <Banniere/>
@@ -55,9 +41,6 @@ const App = () => {
                             <Route path="/contact" component={ContactPage} />
                             <Route path="/reservation" component={ReservationPage} />
                             <Route path="/livre" component={LivreOr} />
-                            <Route path="/login" component={LoginPage} />
-                            <PrivateRoute path="/admin" component={AdminHomePage} />
-                            <Route path="/register" component={RegisterPage} />
                             <Route path="/" component={HomePage} />
                         </Switch>
                         <Important/>
@@ -65,12 +48,7 @@ const App = () => {
                     <Footer/>
                 </HashRouter>
             <ToastContainer position={toast.POSITION.BOTTOM_LEFT}/>
-        </AuthContext.Provider>
-
-
-
-
-
+        </>
     );
 }
 

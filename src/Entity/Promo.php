@@ -18,7 +18,7 @@ use App\Controller\PromoController;
  *     },
  *     collectionOperations= {"GET", "POST"},
  *     itemOperations={
- *         "GET",  "DELETE",
+ *         "GET",  "DELETE", "PUT",
  *         "image"={
  *              "method"="POST",
  *              "path"="/promos/{id}/image",

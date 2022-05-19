@@ -1,24 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { NavLink } from "react-router-dom";
-import AuthAPI from '../services/AuthAPI';
-import {toast} from "react-toastify";
-import AuthContext from "../contexts/AuthContext";
 
 const Navbar = (props) => {
 
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
-  const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
 
   const handleNavCollapse = () => {
     setIsNavCollapsed(!isNavCollapsed);
   };
 
-  const handleLogout = () => {
-    AuthAPI.logout();
-    setIsAuthenticated(false);
-    toast.info("Vous êtes désormais déconnecté !")
-    history.push("/login");
-  };
 
   return (
 <>
