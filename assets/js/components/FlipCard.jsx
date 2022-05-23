@@ -1,10 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import ReactCardFlip from "react-card-flip";
-import axios from "axios";
-import {API_URL} from "../config";
 import promotionsAPI from "../services/promotionsAPI";
-import MassageCard from "./MassageCard";
-import massagesAPI from "../services/massagesAPI";
 import {toast} from "react-toastify";
 
 
@@ -18,7 +14,6 @@ const FlipCard = (props) => {
             const data = await promotionsAPI.findAll();
             setPromos(data);
         } catch (error) {
-            console.log(error.response);
             toast.error("Impossible de charger les massages");
         }
     };
@@ -35,8 +30,6 @@ const FlipCard = (props) => {
     const handleAutoFlip = () => {
         setTimeout(handleOver, 3000);
     }
-    console.log(promos);
-
 
     return (
         <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical"

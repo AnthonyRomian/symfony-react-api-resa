@@ -1,5 +1,4 @@
 import React from 'react';
-import ContactPage from "./ContactPage";
 import MassagePage from "./MassagePage";
 
 const HomePage = (props) => {

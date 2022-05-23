@@ -19,12 +19,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     subresourceOperations={
  *          "massages_get_subresource"={"path"="/reservations/{id}/massages"}
  *     },
- *
  *     collectionOperations= {"GET","POST"},
- *     itemOperations= {"GET", "PUT", "DELETE"},
- *     normalizationContext={
- *      "groups"={"reservation_read"}
- *  }
+ *     itemOperations= {"GET", "PUT", "DELETE"}
  * )
  */
 class Reservation
@@ -105,6 +101,7 @@ class Reservation
     /**
      * @ORM\ManyToOne(targetEntity=Massage::class, inversedBy="reservations")
      * @Groups({"reservation_read"})
+     * @Assert\NotBlank(message="La selection du message est obligatoire")
      * @ORM\JoinColumn(nullable=false)
      */
     private $massage;
@@ -205,18 +202,6 @@ class Reservation
     {
         $this->dateRdv = $dateRdv;
     }
-
-    /*public function getMassage(): ?Massage
-    {
-        return $this->massage;
-    }
-
-    public function setMassage(?Massage $massage): self
-    {
-        $this->massage = $massage;
-
-        return $this;
-    }*/
 
     public function getMassage(): ?Massage
     {

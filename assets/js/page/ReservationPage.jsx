@@ -1,20 +1,28 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, { useEffect, useState} from "react";
 import Field from "../components/forms/Field";
 import axios from "axios";
 import Select from "../components/forms/Select";
 import {toast} from "react-toastify";
 import {API_URL} from "../config";
+import massagesAPI from "../services/massagesAPI";
+import reservationsAPI from "../services/reservationsAPI";
 
 const ReservationPage = (props) => {
 
     const [massages, setMassages] = useState([]);
 
+    const fetchMassages = async () => {
+        try {
+            const data = await massagesAPI.findAll();
+            setMassages(data);
+        } catch (error) {
+            toast.error("Impossible de charger les massages");
+        }
+    };
+
     // load du massage
     useEffect(() => {
-        axios.get(API_URL+"massages")
-            .then(response => response.data)
-            .then(data => setMassages(data));
-
+        fetchMassages();
     }, []);
 
 
@@ -45,41 +53,26 @@ const ReservationPage = (props) => {
         setReservation({...reservation, [name]: value});
     };
 
-
-
-    const handleLoad = () => {
-        console.log("test");
-
-    }
-
     //gestion de la soumission du form
     const handleSubmit = async event => {
         event.preventDefault();
         try {
-            await axios.post(API_URL+"reservations", {
-                ...reservation,
+            await reservationsAPI.create({...reservation,
                 massage: `/api/massages/${reservation.massage}`
             });
-            if (isAuthenticated) {
-                history.push("/admin");
             toast.success("Votre réservation à bien été prise en compte");
-            } else {
-                toast.success("Votre réservation à bien été prise en compte");
-
-            }
         } catch ({response}) {
-            toast.error("Selectionnez votre massage");
             const {violations} = response.data;
-            if (violations) {
-                const apiErrors = {};
-                violations.forEach(({propertyPath, message}) => {
-                    apiErrors[propertyPath] = message;
-                });
-                setErrors(apiErrors);
-                toast.error("Il y a des erreurs dans votre formulaire");
+        if (violations) {
+            const apiErrors = {};
+            violations.forEach(({propertyPath, message}) => {
+                apiErrors[propertyPath] = message;
+            });
+            setErrors(apiErrors);
+            toast.error("Il y a des erreurs dans votre formulaire");
 
-            }
         }
+    }
     };
 
     return (

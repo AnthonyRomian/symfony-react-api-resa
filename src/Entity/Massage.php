@@ -29,7 +29,7 @@ class Massage
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"reservation_read", "massages_subresource"})
+     * @Groups( {"massages_subresource"})
      */
     private $nom;
 

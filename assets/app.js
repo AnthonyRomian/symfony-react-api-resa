@@ -13,7 +13,6 @@ import './styles/app.css';
 import {HashRouter, Route, Switch, withRouter} from "react-router-dom";
 import HomePage from "./js/page/HomePage";
 import MassagePage from "./js/page/MassagePage";
-import PrixPage from "./js/page/PrixPage";
 import ContactPage from "./js/page/ContactPage";
 import Navbar from "./js/components/Navbar";
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -29,7 +28,6 @@ const App = () => {
     const NavBarWithRouter = withRouter(Navbar);
 
     return (
-
         <>
                 <HashRouter >
                     <NavBarWithRouter/>
@@ -37,7 +35,6 @@ const App = () => {
                     <main className="container ">
                         <Switch>
                             <Route path="/massages" component={MassagePage} />
-                            <Route path="/prix" component={PrixPage} />
                             <Route path="/contact" component={ContactPage} />
                             <Route path="/reservation" component={ReservationPage} />
                             <Route path="/livre" component={LivreOr} />
@@ -47,7 +44,7 @@ const App = () => {
                     </main>
                     <Footer/>
                 </HashRouter>
-            <ToastContainer position={toast.POSITION.BOTTOM_LEFT}/>
+                <ToastContainer position={toast.POSITION.BOTTOM_LEFT}/>
         </>
     );
 }

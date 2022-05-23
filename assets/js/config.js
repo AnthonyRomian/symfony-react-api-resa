@@ -1,6 +1,7 @@
 // API CONTEXT
-export const API_URL = "http://localhost:8000/api/";
-//API_URL="'http://localhost:8000/api/'"
+export const API_URL = process.env.API_URL;
+
+//export const API_URL = "http://localhost:8000/api/";
 
 export const RESERVATIONS_API = API_URL + "reservations";
 export const MASSAGES_API = API_URL + "massages";
