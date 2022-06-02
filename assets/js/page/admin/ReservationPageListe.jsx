@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import Pagination from "../../components/Pagination";
 import reservationsAPI from "../../services/reservationsAPI";
 import massagesAPI from "../../services/massagesAPI";
+import TableLoader from "../../components/loaders/TableLoader";
 
 const ReservationPageListe = (props) => {
 
@@ -12,11 +13,13 @@ const ReservationPageListe = (props) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [search, setSearch] = useState('');
     const [massages, setMassages] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const fetchMassages = async () => {
         try {
             const data = await massagesAPI.findAll();
             setMassages(data);
+            setLoading(false);
         } catch (error) {
             toast.error("Impossible de charger les massages");
         }
@@ -70,13 +73,14 @@ const ReservationPageListe = (props) => {
 
     const itemsPerPage = 10;
 
-    // <filtrage customers recherche
+    // filtrage customers recherche
     const filteredReservations = reservations.filter(
         c => c.nom.toLowerCase().includes(search.toLowerCase()) ||
             c.prenom.toLowerCase().includes(search.toLowerCase()) ||
-            c.email.toLowerCase().includes(search.toLowerCase()) ||
-            c.massage.nom.toLowerCase().includes(search.toLowerCase())
+            c.email.toLowerCase().includes(search.toLowerCase())
+
     );
+    console.log(reservations);
 
     //pagination donnes
     const paginatedReservations = Pagination.getData(
@@ -110,7 +114,7 @@ const ReservationPageListe = (props) => {
                     <th></th>
                 </tr>
                 </thead>
-                <tbody >
+                {!loading && <tbody>
 
                 {paginatedReservations.map(reservation => <tr key={reservation.id}>
                     <td>{reservation.id}</td>
@@ -131,8 +135,9 @@ const ReservationPageListe = (props) => {
                     </td>
                 </tr>)}
 
-                </tbody>
+                </tbody>}
             </table>
+            {loading && <TableLoader/>}
             {itemsPerPage < filteredReservations.length && (
                 <Pagination
                     currentPage={currentPage}

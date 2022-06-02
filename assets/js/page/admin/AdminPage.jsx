@@ -39,7 +39,6 @@ const AdminPage = (props) => {
                                     <PrivateRoute exact path="/admin/calendar" component={ReservationPageCalendrier} />
                                     <PrivateRoute exact path="/admin/massageList" component={MassagePageList} />
                                     <PrivateRoute exact path="/admin/massageCreer" component={MassagePageCreation} />
-                                    {/*<PrivateRoute exact path="/admin/massageEdit/:id" component={MassagePageEdit} />*/}
                                     <PrivateRoute exact path="/admin/promoList" component={PromotionPageList} />
                                     <PrivateRoute exact path="/admin/promoCreer" component={PromotionPageCreation} />
                                     <PrivateRoute exact path="/admin/promoEdit/:id" component={PromotionPageEdit} />

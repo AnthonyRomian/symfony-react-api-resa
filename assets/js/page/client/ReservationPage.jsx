@@ -200,8 +200,6 @@ const ReservationPage = (props) => {
                         au cabinet )
                     </button>
                 </div>
-
-
             </form>
             <ReservationDomicile/>
         </div>

@@ -69,7 +69,6 @@ const MassagePage = (props) => {
                 </div>}
                 <LivreOr/>
                 <ReservationPage/>
-                <ReservationDomicile/>
             </div>
         </>
     );

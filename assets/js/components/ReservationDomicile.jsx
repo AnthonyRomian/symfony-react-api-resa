@@ -17,7 +17,6 @@ const ReservationDomicile = (props) => {
             </div>
         </div>
 
-
     );
 }
 
