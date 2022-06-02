@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LivreOr = (props) => {
+const Important = (props) => {
     return (
         <div className="py-3">
             <div className=" card-deck mt-3 mx-2">
@@ -9,7 +9,7 @@ const LivreOr = (props) => {
                         className="fa-solid fa-circle-exclamation px-3"></i>Important<i
                         className="fa-solid fa-circle-exclamation px-3"></i></div>
                     <div className="card-body font-link justify-content">
-                        <p className="color-3 text-justify font-link-2 fs-2 color-secondaire">
+                        <p className="color-3 text-justify text-center font-link-2 fs-2 color-secondaire">
                             Les massages bien-être ne peuvent se substituer à une consultation chez un médecin
                             ni à une rééducation thérapeutique dispensée par un masseur-kinésithérapeute, et n’ont
                             aucune connotation sexuelle.
@@ -21,4 +21,4 @@ const LivreOr = (props) => {
     );
 }
 
-export default LivreOr;
+export default Important;

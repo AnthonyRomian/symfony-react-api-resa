@@ -24,27 +24,31 @@ class Massage
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups(  {"reservation_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups( {"massages_subresource"})
+     * @Groups(  {"reservation_read"})
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=800)
+     * @Groups(  {"reservation_read"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups(  {"reservation_read"})
      */
     private $prix;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups(  {"reservation_read"})
      */
     private $duree;
 
@@ -52,6 +56,7 @@ class Massage
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Groups( {"reservation_read"})
      */
     private $img;
 
@@ -64,8 +69,6 @@ class Massage
     {
         $this->reservations = new ArrayCollection();
     }
-
-
 
     public function getId(): ?int
     {

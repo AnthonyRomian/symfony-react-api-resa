@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import MassageCard from "../components/MassageCard";
-import massagesAPI from "../services/massagesAPI";
+import MassageCard from "../../components/MassageCard";
+import massagesAPI from "../../services/massagesAPI";
 import {toast} from "react-toastify";
-import ListMassageLoader from "../components/loaders/ListMassageLoader";
+import ListMassageLoader from "../../components/loaders/ListMassageLoader";
 import ReservationPage from "./ReservationPage";
 import LivreOr from "./LivreOr";
-import FlipCard from "../components/FlipCard";
+import FlipCard from "../../components/FlipCard";
+import ReservationDomicile from "../../components/ReservationDomicile";
 
 
 const MassagePage = (props) => {
@@ -19,7 +20,7 @@ const MassagePage = (props) => {
             setMassages(data);
             setLoading(false);
         } catch (error) {
-            console.log(error.response);
+            //console.log(error.response);
             props.history.replace("/");
             toast.error("Impossible de charger les massages");
         }
@@ -68,6 +69,7 @@ const MassagePage = (props) => {
                 </div>}
                 <LivreOr/>
                 <ReservationPage/>
+                <ReservationDomicile/>
             </div>
         </>
     );

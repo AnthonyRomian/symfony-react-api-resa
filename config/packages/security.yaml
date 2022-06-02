@@ -42,12 +42,17 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
-        # - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        # - { path: ^/api/massage, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        # - { path: ^/api/reservation,       roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        # - { path: ^/api/admin,       roles: IS_AUTHENTICATED_ANONYMOUSLY, methods: [ GET, PUT, DELETE ] }
+        - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/promos,       roles: IS_AUTHENTICATED_ANONYMOUSLY, methods: [ GET ] }
+        - { path: ^/api/promos,       roles: [ROLE_ADMIN], methods: [ POST, PUT, DELETE ] }
+        - { path: ^/api/massages,       roles: IS_AUTHENTICATED_ANONYMOUSLY, methods: [ GET ] }
+        - { path: ^/api/massages,       roles: [ROLE_ADMIN], methods: [ POST, PUT, DELETE ] }
+        - { path: ^/api/reservations,       roles: IS_AUTHENTICATED_ANONYMOUSLY, methods: [ POST ] }
+        - { path: ^/api/reservations/dateRdvListe,       roles: [ IS_AUTHENTICATED_ANONYMOUSLY ], methods: [ GET ] }
+        - { path: ^/api/reservations,       roles: [ ROLE_ADMIN], methods: [ GET, PUT, DELETE ] }
+        - { path: ^/api/users,       roles: [IS_AUTHENTICATED_ANONYMOUSLY], methods: [ POST ] }
+        - { path: ^/api/users,       roles: [ROLE_ADMIN], methods: [ GET, PUT, DELETE ] }
+
 
 when@test:
     security:

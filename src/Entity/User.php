@@ -14,7 +14,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ApiResource(
- *     normalizationContext={"groups"={"users_read"}}
+ *     normalizationContext={"groups"={"users_read"}},
+ *     denormalizationContext={"groups"={"users_post"}},
  * )
  * @UniqueEntity("email", message="Un utilisateur ayant cette adresse email existe déjà")
  */
@@ -24,13 +25,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"users_read"})
+     * @Groups({"users_read"} )
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups({"users_read"})
+     * @Groups({"users_read", "users_post"})
      * @Assert\NotBlank (message="L'email doit etre renseigné")
      * @Assert\Email (message="L'adresse email doit avoir un format valide")
      */
@@ -45,23 +46,25 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Groups({"users_post"})
      * @Assert\NotBlank (message="Le mot de passe doit etre renseigné")
+     *
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"users_read"})
-     * @Assert\NotBlank (message="Le prénom doit etre renseigné")
+     * @Groups({"users_read","users_post"})
+     * @Assert\NotBlank (message="Le nom doit etre renseigné")
      * @Assert\Length(
-     *     min=3, minMessage="Le prénom doit faire entre 3 et 255 carateres",
-     *     max=255, maxMessage="Le prénom doit faire entre 3 et 255 carateres")
+     *     min=3, minMessage="Le nom doit faire entre 3 et 255 carateres",
+     *     max=255, maxMessage="Le nom doit faire entre 3 et 255 carateres")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"users_read"})
+     * @Groups({"users_read", "users_post"})
      * @Assert\NotBlank (message="Le prénom doit etre renseigné")
      * @Assert\Length(
      *     min=3, minMessage="Le prénom doit faire entre 3 et 255 carateres",

@@ -1,7 +1,7 @@
 import React, {useRef} from 'react';
 import emailjs from '@emailjs/browser';
 import {toast} from "react-toastify";
-import {EMAILJS_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID} from "../config";
+import {EMAILJS_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID} from "../../config";
 
 export const ContactPage = () => {
     const form = useRef();

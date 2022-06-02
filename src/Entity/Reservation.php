@@ -3,10 +3,8 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Repository\ReservationRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\JoinColumn;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -19,8 +17,17 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     subresourceOperations={
  *          "massages_get_subresource"={"path"="/reservations/{id}/massages"}
  *     },
- *     collectionOperations= {"GET","POST"},
- *     itemOperations= {"GET", "PUT", "DELETE"}
+ *     collectionOperations= {"GET","POST","dateRdvListe"={
+ *     "method"="GET",
+ *     "path"="/reservations/dateRdvListe",
+ *     "controller"="App\Controller\ResaDateListController",
+ *     "swagger_context"={
+ *      "summary"="Recupere une liste de date de rendez vous",
+ *      "description"="Recupere une liste de date de rendez vous"
+ *          }
+ *     }},
+ *     itemOperations= {"GET", "PUT", "DELETE"
+ *     }
  * )
  */
 class Reservation

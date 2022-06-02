@@ -78,6 +78,7 @@ body {
 
 #frise {
     object-fit: cover;
+    width: 100%;
 }
 
 #flip {
@@ -136,5 +137,18 @@ Footer  {
 div p {
     white-space: pre-wrap;
 }
+
+/*  CALENDAR   */
+.fc-col-header-cell-cushion  {
+    text-decoration: none;
+    color: black;
+}
+
+.fc-daygrid-day-number {
+    text-decoration: none;
+    color: #786b62;
+}
+
+
 
 

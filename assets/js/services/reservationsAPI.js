@@ -1,24 +1,35 @@
 import axios from 'axios';
-import { RESERVATIONS_API } from '../config';
+import {DATE_LISTE_API, RESERVATIONS_API} from '../config';
 import Cache from './cache';
 
 
-/*async function findAll () {
+async function findAll () {
     
 const cachedReservations = await Cache.get("reservations");
 
   if (cachedReservations) return cachedReservations;
 
   return axios.get(RESERVATIONS_API).then(response => {
-    const reservations = response.data["hydra:member"];
-    console.log(reservations);
+    const reservations = response.data;
     Cache.set("reservations", reservations);
     return reservations;
   });
-}*/
+}
 
-/*function deleteReservation(id)  {
-    console.log(id);
+async function findDate () {
+
+    const cachedReservations = await Cache.get("reservations");
+
+    if (cachedReservations) return cachedReservations;
+
+    return axios.get(DATE_LISTE_API).then(response => {
+        const reservationsDate = response.data;
+        Cache.set("reservations", reservationsDate);
+        return reservationsDate;
+    });
+}
+
+function deleteReservation(id)  {
     return axios.delete(RESERVATIONS_API + "/" + id).then(async response => {
     const cachedReservations = await Cache.get("reservations");
 
@@ -28,9 +39,9 @@ const cachedReservations = await Cache.get("reservations");
 
     return response;
   });
-}*/
+}
 
-/*async function find(id) {
+async function find(id) {
     const cachedReservation = await Cache.get("reservations." + id);
 
   if (cachedReservation) return cachedReservation;
@@ -42,9 +53,9 @@ const cachedReservations = await Cache.get("reservations");
 
     return reservation;
   });
-}*/
+}
 
-/*function update(id, reservation) {
+function update(id, reservation) {
     return axios.put(RESERVATIONS_API + "/" + id, reservation).then(async response => {
     const cachedReservations = await Cache.get("reservations");
     const cachedReservation = await Cache.get("reservations." + id);
@@ -60,7 +71,7 @@ const cachedReservations = await Cache.get("reservations");
 
     return response;
   });
-}*/
+}
 
 function create (reservation) {
     return axios.post(RESERVATIONS_API, reservation).then(async response => {
@@ -75,5 +86,10 @@ function create (reservation) {
 }
 
 export default {
-    create
+    findAll,
+    findDate,
+    find,
+    update,
+    create,
+    delete: deleteReservation
 };
