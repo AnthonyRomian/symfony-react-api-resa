@@ -184,7 +184,7 @@ const ReservationPage = (props) => {
                 <Select
                     name="massage"
                     label="Quel massage avez vous choisi ?"
-                    value={reservation.massage ? reservation.massage : reservation.massage = 12}
+                    value={reservation.massage ? reservation.massage : reservation.massage = 1}
                     placeholder="Choisir un massage"
                     error={errors.massage}
                     onChange={handleChange}>
