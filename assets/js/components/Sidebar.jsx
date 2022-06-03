@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {NavLink, Redirect} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import AuthAPI from "../services/AuthAPI";
 import {toast} from "react-toastify";
 import AuthContext from "../contexts/AuthContext";
@@ -130,7 +130,7 @@ const Sidebar = ({history}) => {
                                             className="fa-solid fa-eye"></i></NavLink>
                                     </li>
                                     <li className="nav-item mx-1">
-                                        <NavLink to="/admin/register" className="nav-link">Inscription</NavLink>
+                                        <NavLink to="/admin/register" className="btn btn-danger">Inscription</NavLink>
                                     </li>
                                     <li className="nav-item mx-1">
                                         <NavLink to="/admin" className="btn btn-success">Connexion</NavLink>

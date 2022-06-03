@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import {toast} from "react-toastify";
 import Field from "../../components/forms/Field";
 import usersAPI from "../../services/usersAPI";
@@ -114,10 +114,17 @@ const RegisterPage = ({history, params}) => {
 
                         <div className="form-group">
                             <button type="submit" className="btn btn-primaire">Confirmation</button>
-                            <Link to="/login" className="btn btn-secondaire mx-2">J'ai déjà un compte</Link>
                         </div>
 
                     </form>
+                    <div className="d-flex justify-content-center align-items-center mt-4">
+                          <span className="fw-normal">
+                            J'ai déjà un compte
+                            <NavLink to="admin/" className="fw-bold text-decoration-none color-secondaire">
+                              {` Je me connecte `}
+                            </NavLink>
+                          </span>
+                    </div>
                 </div>
             </div>
 

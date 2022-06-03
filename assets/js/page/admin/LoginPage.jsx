@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import Field from '../../components/forms/Field';
 import AuthContext from '../../contexts/AuthContext';
 import AuthAPI from '../../services/AuthAPI';
+import { NavLink} from "react-router-dom";
 
 
 const LoginPage = ({ history }) => {
@@ -68,6 +69,14 @@ const LoginPage = ({ history }) => {
                         </button>
                     </div>
                 </form>
+                <div className="d-flex justify-content-center align-items-center mt-4">
+                  <span className="fw-normal">
+                    Vous n'avez pas de compte
+                    <NavLink to="/admin/register" className="fw-bold text-decoration-none color-secondaire">
+                      {` Créer un compte `}
+                    </NavLink>
+                  </span>
+                </div>
             </div>
         </div>
 
